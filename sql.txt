@@ -53,3 +53,33 @@ from laptop where model in (select model from product where maker = 'B')
 union
 select model,price
 from printer where model in (select model from product where maker = 'B')
+
+8)Найдите производителей ПК с процессором не менее 450 Мгц. Вывести: Maker
+select distinct maker
+from product
+join pc on pc.model = product.model
+where speed >= 450
+
+9)Найдите модели принтеров, имеющих самую высокую цену. Вывести: model, price
+select model, price
+from Printer
+where price = (select MAX (price) from Printer)
+
+10)Найдите среднюю скорость ПК
+Select AVG(speed)
+from pc
+
+11)Найдите среднюю скорость ПК-блокнотов, цена которых превышает 1000 дол.
+Select avg(speed)
+from laptop
+where price>1000
+
+12)Найдите среднюю скорость ПК, выпущенных производителем A.
+select avg (speed) from pc 
+join product on pc.model= product.model where maker = 'A'
+
+
+
+
+
+
